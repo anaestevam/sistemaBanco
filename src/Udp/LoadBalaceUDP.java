@@ -11,7 +11,7 @@ public class LoadBalaceUDP {
     }
 
     public void iniciar() throws Exception {
-        System.out.println("UDP: Load Balance inicializado!");
+        System.out.println("UDP: Load Balace inicializado!");
 
     }
 }
