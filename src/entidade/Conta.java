@@ -3,11 +3,38 @@ package entidade;
 public class Conta {
     private int id;
     private int agencia;
-    private int conta;
+    private int conta, saques;
     private double valor;
     private String nome;
     private String tipoConta;
+	private double saldo;
 
+    public Conta(double saldo, String nome) {
+        this.saldo = saldo;
+        this.nome = nome;
+    }
+    
+    public double getSaldo() {
+        return saldo;
+    }
+    
+    public void sacar(double valor){
+        if(saldo >= valor){
+            saldo -= valor;
+            saques++;
+            System.out.println("Sacado: " + valor);
+            System.out.println("Novo saldo: " + saldo + "\n");
+        } else {
+            System.out.println("Saldo insuficiente\n");
+        }
+    }
+    
+    public void depositar(double valor){
+        saldo += valor;
+        System.out.println("Depositado: " + valor);
+        System.out.println("Novo saldo: " + saldo + "\n");
+    }
+    
     public int getId() {
         return id;
     }
@@ -56,4 +83,3 @@ public class Conta {
         this.tipoConta = tipoConta;
     }
 }
-
