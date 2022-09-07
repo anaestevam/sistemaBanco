@@ -12,6 +12,7 @@ public class Conta {
     public Conta(double saldo, String nome) {
         this.saldo = saldo;
         this.nome = nome;
+        /*ajeitar essa logica aqui*/
     }
     
     public double getSaldo() {
