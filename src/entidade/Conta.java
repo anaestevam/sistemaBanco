@@ -1,4 +1,4 @@
-package Udp;
+package entidade;
 
 public class Conta {
     private int id;
@@ -56,3 +56,4 @@ public class Conta {
         this.tipoConta = tipoConta;
     }
 }
+

@@ -1,10 +1,11 @@
-package Udp;
+package udp;
 
 import java.net.*;
 import java.util.*;
-import java.io.*;
 
-import Udp.LoadBalaceUDP;
+import udp.LoadBalaceUDP;
+
+import java.io.*;
 
 public class ServidorUDP implements UDP {
     protected Integer porta;
