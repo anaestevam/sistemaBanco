@@ -14,13 +14,13 @@ public class Reserva {
         listaPortas.addAll(portas);
         Integer resultado = null;
 
-        synchronized (posicao) {
+       /* synchronized (posicao) {
             if (posicao > listaPortas.size() - 1) {
                 posicao = 0;
             }
             resultado = listaPortas.get(posicao); 
             posicao++;
-        }
+        }*/
         return resultado;
 	}
 }

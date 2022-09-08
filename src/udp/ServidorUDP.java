@@ -9,14 +9,14 @@ import java.util.Set;
 import loadbalace.Ips;
 
 public class ServidorUDP {
-	protected Integer porta;
-	protected DatagramSocket serverSocket;
-	protected List<Integer> listaPortas;
-	protected String ultimaPorta;
+	public Integer porta;
+	public DatagramSocket serverSocket;
+	public List<Integer> listaPortas;
+	public String ultimaPorta;
 	
 	public ServidorUDP(Integer porta) throws NumberFormatException, SocketException {
 		this.porta = porta;
-		this.serverSocket = new DatagramSocket(this.porta);
+		this.serverSocket = new DatagramSocket(8083);
 		
 		Set<Integer> portas = Ips.ipMap.keySet();
 		this.listaPortas = new ArrayList<Integer>(); 
@@ -63,7 +63,7 @@ public class ServidorUDP {
 	public void enviarMensagemJMeter(String mensagem, Integer porta, InetAddress endereco) throws IOException {
 		byte[] bytesMensagem = mensagem.getBytes();
 		DatagramPacket pacoteEnviar = new DatagramPacket(bytesMensagem, bytesMensagem.length, endereco, porta);
-		System.out.println("UDP: Enviando mensagem '" + new String(pacoteEnviar.getData()) + "' para o endereço " + pacoteEnviar.getAddress() + ":" + pacoteEnviar.getPort() + "\n");
+		System.out.println("UDP: Enviando mensagem '" + new String(pacoteEnviar.getData()) + "' para o endereco " + pacoteEnviar.getAddress() + ":" + pacoteEnviar.getPort() + "\n");
 		
 		this.serverSocket.send(pacoteEnviar);
 	}

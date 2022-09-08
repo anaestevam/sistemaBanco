@@ -8,11 +8,7 @@ public class Loadbalace {
 	
 		LoadBalaceUDP loadBalaceUDP = new LoadBalaceUDP(8081);
 		loadBalaceUDP.iniciar();
-		System.out.println("UDP: Load Balancer desligando...");
-		
-//		// TCP
-//		TCPLoadBalancer loadBalancerTCP = new TCPLoadBalancer(8081);
-//		loadBalancerTCP.iniciar();
-//		System.out.println("TCP: Load Balancer desligando...");
+		System.out.println("UDP: Load Balace desligando...");
+
 	}
 }

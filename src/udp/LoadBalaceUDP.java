@@ -7,13 +7,13 @@ import loadbalace.Reserva;
 
 public class LoadBalaceUDP {
 
-		private ServidorUDP udp; 
+		public ServidorUDP udp; 
 		public LoadBalaceUDP(Integer porta) throws NumberFormatException, SocketException {
 			udp = new ServidorUDP(porta);
 		}
 
 		public void iniciar() throws Exception {
-			System.out.println("UDP: Load Balancer inicializado!");
+			System.out.println("UDP: Load Balace inicializado!");
 			while (true) {
 				DatagramPacket pacote = udp.lerMensagem();
 				String mensagem = new String(pacote.getData());

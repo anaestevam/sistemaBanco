@@ -1,19 +1,25 @@
 package udp;
 
 import java.net.*;
-import java.util.*;
 import java.io.*;
 
 public class ClienteUDP {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
+
+//			UDP
+		ClienteUDP servicoUDP = new ClienteUDP(8082);
+		servicoUDP.iniciar();
+		System.out.println("UDP: Serviço A desligando...");
+				
+	}
 
 		/*
 		 * System.out.println("Digite uma mensagem:");
 		 * Scanner teclado = new Scanner(System.in);
 		 * String mensagem = teclado.nextLine();
 		 */
-		DatagramSocket aSocket = null;
+		/*DatagramSocket aSocket = null;
 
 		try {
 			aSocket = new DatagramSocket();
@@ -33,7 +39,6 @@ public class ClienteUDP {
 		} finally {
 			if (aSocket != null)
 				aSocket.close();
-		}
+		}*/
 
-	}
 }
