@@ -9,7 +9,7 @@ public class Database {
 	private List<Integer> backup;
 	private ServidorUDP udp; 
 		
-	public Database(Integer porta, Integer backup) throws NumberFormatException, SocketException {
+	public Database(String porta, Integer backup) throws NumberFormatException, SocketException {
 		udp = new ServidorUDP(porta);
 		this.backup = Arrays.asList(backup);
 	}

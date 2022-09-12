@@ -8,7 +8,7 @@ import loadbalace.Reserva;
 public class LoadBalaceUDP {
 
 		public ServidorUDP udp; 
-		public LoadBalaceUDP(Integer porta) throws NumberFormatException, SocketException {
+		public LoadBalaceUDP(String porta) throws NumberFormatException, SocketException {
 			udp = new ServidorUDP(porta);
 		}
 

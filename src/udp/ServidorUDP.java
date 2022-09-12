@@ -9,14 +9,14 @@ import java.util.Set;
 import loadbalace.Ips;
 
 public class ServidorUDP {
-	public Integer porta;
+	public String porta;
 	public DatagramSocket serverSocket;
 	public List<Integer> listaPortas;
 	public String ultimaPorta;
 	
-	public ServidorUDP(Integer porta) throws NumberFormatException, SocketException {
+	public ServidorUDP(String porta) throws NumberFormatException, SocketException {
 		this.porta = porta;
-		this.serverSocket = new DatagramSocket(8083);
+		this.serverSocket = new DatagramSocket(Integer.parseInt(porta));
 		
 		Set<Integer> portas = Ips.ipMap.keySet();
 		this.listaPortas = new ArrayList<Integer>(); 

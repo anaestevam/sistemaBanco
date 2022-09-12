@@ -5,11 +5,15 @@ import java.io.*;
 
 public class ClienteUDP {
 
+	public ClienteUDP(Integer nome) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static void main(String[] args) throws Exception{
 
 //			UDP
-		ClienteUDP servicoUDP = new ClienteUDP(8082);
-		servicoUDP.iniciar();
+		ClienteUDP servicoUDP = new ClienteUDP(8083);
+		
 		System.out.println("UDP: Serviço A desligando...");
 				
 	}
