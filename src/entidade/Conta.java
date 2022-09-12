@@ -9,13 +9,22 @@ public class Conta {
     private String tipoConta;
 	private double saldo;
 
-    public Conta(double saldo, String nome) {
-        this.saldo = saldo;
-        this.nome = nome;
-        /*ajeitar essa logica aqui*/
-    }
-    
-    public double getSaldo() {
+	public Conta(int agencia, int conta, String tipoConta) {
+		super();
+		this.agencia = agencia;
+		this.conta = conta;
+		this.tipoConta = tipoConta;
+	}
+	
+    public Conta(int id, int agencia, int conta, String tipoConta) {
+		super();
+		this.id = id;
+		this.agencia = agencia;
+		this.conta = conta;
+		this.tipoConta = tipoConta;
+	}
+
+	public double getSaldo() {
         return saldo;
     }
     

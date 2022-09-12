@@ -4,28 +4,30 @@ import java.util.List;
 
 public class Banco {
 	
-	private List<Conta> contas;
-	private List<Banco> bancos;
+	private int codigo;
+	private String nome;
+	private double valor;
+	private Conta conta;
 	
-	public Banco() {
-		/* Fazer construtor */
+	
+	public Banco(int codigo, String nome, Conta conta, double valor) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.valor = valor;
+		this.conta = conta;
+		conta.depositar(valor);
 	}
 	
-	public List<Conta> getContas() {
-		return contas;
+	public Banco(int codigo, String nome, Conta conta) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.conta = conta;
+		conta.getSaldo();
 	}
 	
-	public void setContas(List<Conta> contas) {
-		this.contas = contas;
-	}
 
-	public List<Banco> getBancos() {
-		return bancos;
-	}
-
-	public void setBancos(List<Banco> bancos) {
-		this.bancos = bancos;
-	}
 
 }
 
