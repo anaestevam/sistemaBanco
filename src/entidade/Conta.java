@@ -1,25 +1,21 @@
 package entidade;
 
+import java.util.HashMap;
+
 public class Conta {
-    private int id;
-    private int agencia;
+	private HashMap<Integer,Float> contas = new HashMap<>();
+	private int id;
     private int conta, saques;
     private double valor;
     private String nome;
     private String tipoConta;
 	private double saldo;
-
-	public Conta(int agencia, int conta, String tipoConta) {
-		super();
-		this.agencia = agencia;
-		this.conta = conta;
-		this.tipoConta = tipoConta;
+	
+	public Conta() {
 	}
 	
-    public Conta(int id, int agencia, int conta, String tipoConta) {
+    public Conta(int conta, String tipoConta) {
 		super();
-		this.id = id;
-		this.agencia = agencia;
 		this.conta = conta;
 		this.tipoConta = tipoConta;
 	}
@@ -27,8 +23,12 @@ public class Conta {
 	public double getSaldo() {
         return saldo;
     }
+	
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+    }
     
-    public void sacar(double valor){
+    public void sacar(Conta conta, double valor){
         if(saldo >= valor){
             saldo -= valor;
             saques++;
@@ -39,28 +39,32 @@ public class Conta {
         }
     }
     
-    public void depositar(double valor){
+
+	public String toString() {
+		return "Conta [conta=" 
+				+ conta 
+				+ ", nome=" 
+				+ nome 
+				+ ", tipoConta=" 
+				+ tipoConta
+				+ ", saldo=" 
+				+ saldo + "]";
+	}
+
+	public void depositar(Conta conta, double valor){
         saldo += valor;
         System.out.println("Depositado: " + valor);
         System.out.println("Novo saldo: " + saldo + "\n");
     }
-    
-    public int getId() {
-        return id;
-    }
+	
+	 public int getId() {
+	        return id;
+	    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(int agencia) {
-        this.agencia = agencia;
-    }
-
+	 public void setId(int id) {
+	        this.id = id;
+	 }
+	    
     public int getConta() {
         return conta;
     }

@@ -1,16 +1,24 @@
 package entidade;
 
+import tcp.LoadBalaceTCP;
 import udp.LoadBalaceUDP;
-import udp.ServidorUDP;
 
 public class Loadbalace {
 	
 	public static void main(String[] args) throws Exception {
 	
-		LoadBalaceUDP loadBalaceUDP = new LoadBalaceUDP(args[0]);
+		//UDP
+		/*
+		LoadBalaceUDP loadBalaceUDP = new LoadBalaceUDP(8081);
 		loadBalaceUDP.iniciar();
-		System.out.println("UDP: Load Balace desligando...");
 		
+		System.out.println("UDP: LoadBalance desligando...");
+		*/
+		// TCP
+		
+		LoadBalaceTCP loadBalaceTCP = new LoadBalaceTCP(9100);
+		loadBalaceTCP.iniciar();
+		System.out.println("TCP: LoadBalance desligando...");
 
 	}
 }

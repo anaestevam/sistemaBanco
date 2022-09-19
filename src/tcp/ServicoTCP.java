@@ -8,13 +8,13 @@ import java.util.concurrent.Executors;
 
 import loadbalace.Reserva;
 
-public class LoadBalaceTCP {
+public class ServicoTCP {
 	private ServerSocket serverSocket;
     private ExecutorService executorService;
     private final int POOL_SIZE = 20;
     ServidorTCP tcp;
-
-    public LoadBalaceTCP(Integer porta) throws IOException {
+    
+    public ServicoTCP(Integer porta) throws IOException {
         serverSocket = new ServerSocket(porta);
         executorService = Executors.newFixedThreadPool(Runtime.getRuntime()
                 .availableProcessors() * POOL_SIZE);
@@ -22,20 +22,21 @@ public class LoadBalaceTCP {
     }
 
     public void iniciar() {
-    	System.out.println("TCP: LoadBalancer inicializado!");
+    	System.out.println("TCP: Serviço inicializado!");
         while(true) {
-            Socket socket = null;
+        	Socket socket = null;
             try {
                 socket = serverSocket.accept();
-                Integer portaServico = Reserva.getPorta(); 
-                Socket socketEnviar = tcp.conectar(portaServico);
+                Integer portaBanco = 8084; 
+                Socket socketEnviar = tcp.conectar(portaBanco);
                 if(socketEnviar == null) {
-                	portaServico = Reserva.getPorta(); 
+                	portaBanco = 8085; 
                 }
-                executorService.execute(new ServidorTCP(socket, portaServico, false));
+                this.executorService.execute(new ServidorTCP(socket, portaBanco, false));
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+        } 
     }
+
 }

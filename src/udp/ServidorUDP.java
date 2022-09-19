@@ -9,14 +9,14 @@ import java.util.Set;
 import loadbalace.Ips;
 
 public class ServidorUDP {
-	public String porta;
+	public Integer porta;
 	public DatagramSocket serverSocket;
 	public List<Integer> listaPortas;
 	public String ultimaPorta;
 	
-	public ServidorUDP(String porta) throws NumberFormatException, SocketException {
+	public ServidorUDP(Integer porta) throws NumberFormatException, SocketException {
 		this.porta = porta;
-		this.serverSocket = new DatagramSocket(Integer.parseInt(porta));
+		this.serverSocket = new DatagramSocket(porta);
 		
 		Set<Integer> portas = Ips.ipMap.keySet();
 		this.listaPortas = new ArrayList<Integer>(); 
@@ -51,11 +51,11 @@ public class ServidorUDP {
 	        sock.close();
 	        return false;
         } catch (BindException ignored) {
-//        	System.out.println("UDP: Ocupado!");
+        	System.out.println("UDP: Ocupado!");
         	return true;
         } catch (SocketException ex) {
         	System.out.println(ex);
-//        	System.out.println("Timeout!");
+        	System.out.println("Timeout!");
         	return true;
         }
 	}

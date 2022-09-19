@@ -2,25 +2,32 @@ package tcp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.*;
-import java.net.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.BindException;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.SocketException;
 
+import servico.Caixa;
 
-public class ServidorTCP {
+public class ServidorTCP implements Runnable {
 	private Socket cliente = null;
 	private Socket servico = null;
 	private Integer porta;
-	private Boolean banco;
+	private Boolean database;
 	private Boolean temServico;
 	
 	public ServidorTCP() {
     
     }
 	
-    public ServidorTCP(Socket cliente, Integer porta, Boolean banco) throws IOException {
+    public ServidorTCP(Socket cliente, Integer porta, Boolean database) throws IOException {
         this.cliente = cliente;
-        this.banco = banco;
         this.porta = porta;
+        this.database = database;
         
         if(porta != null) {
         	this.servico = new Socket(InetAddress.getLocalHost(), porta);
@@ -41,12 +48,12 @@ public class ServidorTCP {
         BufferedReader servicoBr = null;
         PrintWriter servicoOut = null;        
 
-//        System.out.println("TCP: Nova conexão em " + this.cliente.getInetAddress() + ":" + this.cliente.getPort());
+        System.out.println("TCP: Nova conexão em " + this.cliente.getInetAddress() + ":" + this.cliente.getPort());
         try {
         	String mensagem = null;
         	if(servico == null) {
-        		System.out.println("TCP: Nenhum servidor disponível!");
-        		mensagem = "Nenhum servidor disponível";
+        		System.out.println("TCP: Nenhum servidor disponivel!");
+        		mensagem = "Nenhum servidor disponivel";
         	}
         	else {        		
         		clienteBr = getReader(cliente);
@@ -57,7 +64,7 @@ public class ServidorTCP {
             
             if(this.porta == 8082 || this.porta == 8083) {
             	clienteOut = new PrintWriter(cliente.getOutputStream());
-            	clienteOut.write("Enviando mensagem de confirmação!");            	
+            	clienteOut.write("Enviando mensagem de confirmacao!");            	
             	clienteOut.flush();
             }
             
@@ -71,10 +78,10 @@ public class ServidorTCP {
                  System.out.println("TCP: Enviando mensagem " + mensagem + "\n do endereço " + servico.getPort() + "\n");
             }
 
-            if(mensagem != null && banco) {
-            	Samu samu = new Samu();
-            	samu.iniciarChamado(mensagem);
-            	System.out.println("TCP: Mesagem chegou ao banco!");
+            if(mensagem != null && database) {
+            	Caixa caixa = new Caixa();
+            	caixa.iniciarConta(mensagem);
+            	System.out.println("TCP: Mensagem chegou ao banco de dados!");
             }
 
         } catch (IOException e) {
@@ -107,7 +114,7 @@ public class ServidorTCP {
     	try {
 			socket = new Socket(InetAddress.getLocalHost(), porta);
 		} catch (IOException e) {
-			System.out.println("TCP: Conexão com servidor falhou!");
+			System.out.println("TCP: Conexao com servidor falhou!");
 		}
     	return socket;
     }
