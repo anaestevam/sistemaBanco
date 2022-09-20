@@ -10,7 +10,7 @@ public class ServidorHTTP {
 
 		System.out.println("Meu Servidor da Web iniciado");
 
-		try (ServerSocket serverSocket = new ServerSocket(9000)) {
+		try (ServerSocket serverSocket = new ServerSocket(8001)) {
 
 			while (true) {
 

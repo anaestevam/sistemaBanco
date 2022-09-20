@@ -54,9 +54,9 @@ public class ClientHandler implements Runnable {
 
 				responseBuffer
 
-						.append("<html><h1>WebServer Home Page.... </h1><br>")
+						.append("<html><h1>Web Banco 24h</h1><br>")
 
-						.append("<b>Bem vindo ao Meu web server! </b><BR>")
+						.append("<b><p style=\"text-align:center\">Bem vindo ao Banco 24h!</p></b><BR>")
 
 						.append("</html>");
 
